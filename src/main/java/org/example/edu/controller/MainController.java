@@ -14,10 +14,4 @@ public class MainController {
         return "Hello " + name;
     }
 
-    @GetMapping("/student")
-    public Student getStudent() {
-        Student st = new Student(1,"Valer","Valera@ya.ru",19);
-        return st;
-    }
-
 }
