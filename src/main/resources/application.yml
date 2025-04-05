@@ -1,19 +1,28 @@
 server:
   port: 8081
 
-  spring:
+spring:
 
-    #postgres
-    datasource:
-      url: jdbc:postgresql://localhost:5432/postgres
-      username: postgres
-      password: postgres
-      driverClassName: org.postgresql.Driver
-      initialization-mode: always
+  #h2
+  #  datasource:
+  #    url: jdbc:h2:mem:testdb
+  #
+  #  h2:
+  #    console:
+  #      #enabled: false
+  #      enabled: true
+
+  #postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+    initialization-mode: always
 
 
-    jpa:
-      generate-ddl: true
-      hibernate:
-        ddl-auto: update
-      show-sql: true
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true

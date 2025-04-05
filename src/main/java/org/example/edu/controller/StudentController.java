@@ -12,19 +12,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentRepository repository;
-    private long countId = 0;
 
     @GetMapping("/student")
     public List<Student> getStudentList() {
-        return repository.getStudentList();
+        return repository.findAll();
     }
 
     @PostMapping("/student")
     public long saveStudent(@RequestParam String name, @RequestParam String email, @RequestParam int age) {
-        countId = countId + 1;
-        Student savedStudent = new Student(countId, name, email, age);
+        Student savedStudent = new Student(name, email, age);
 
-        return repository.save(savedStudent);
+        return repository.save(savedStudent).getId();
     }
 
     @GetMapping("/student/{id}")
