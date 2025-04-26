@@ -1,9 +1,9 @@
-package org.example.edu.controller;
+package ru.example.edu.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.edu.model.Student;
-import org.example.edu.repository.StudentRepository;
 import org.springframework.web.bind.annotation.*;
+import ru.example.edu.model.Student;
+import ru.example.edu.repository.StudentRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,6 @@ public class StudentController {
     @PostMapping("/student")
     public long saveStudent(@RequestParam String name, @RequestParam String email, @RequestParam int age) {
         Student savedStudent = new Student(name, email, age);
-
         return repository.save(savedStudent).getId();
     }
 
@@ -31,8 +30,24 @@ public class StudentController {
     }
 
     @DeleteMapping("/student/{id}")
-    public void deletrStudentById(@PathVariable long id) {
+    public void deleteStudentById(@PathVariable long id) {
         repository.deleteById(id);
     }
 
+    @PutMapping("/student/{id}")
+    public Student updateStudent(@PathVariable long id, @RequestBody Student st) {
+        Student student = repository.findById(id).get();
+
+        student.setName(st.getName());
+        student.setAge(st.getAge());
+        student.setEmail(st.getEmail());
+
+        return repository.save(student);
+    }
+
+    @GetMapping("/student/name")
+    public List<Student> findByName(@RequestParam String name) {
+        List<Student> st = repository.findByName(name);
+        return st;
+    }
 }

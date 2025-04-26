@@ -1,11 +1,13 @@
-package org.example.edu.model;
+package ru.example.edu.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
-@Table(name = "student")
 @NoArgsConstructor
+@Table(name = "student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +20,9 @@ public class Student {
     private int age;
 
     public Student(String name, String email, int age) {
-        this.age = age;
-        this.email = email;
         this.name = name;
+        this.email = email;
+        this.age = age;
     }
 
     public Student(long id, String name, String email, int age) {
@@ -28,16 +30,6 @@ public class Student {
         this.name = name;
         this.email = email;
         this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", age='" + age + '\'' +
-                '}';
     }
 
     public long getId() {
@@ -56,5 +48,13 @@ public class Student {
         return age;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
-

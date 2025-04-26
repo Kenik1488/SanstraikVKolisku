@@ -2,15 +2,14 @@ server:
   port: 8081
 
 spring:
-
   #h2
-  #  datasource:
-  #    url: jdbc:h2:mem:testdb
-  #
-  #  h2:
-  #    console:
-  #      #enabled: false
-  #      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#
+#  h2:
+#    console:
+#      #enabled: false
+#      enabled: true
 
   #postgres
   datasource:
@@ -19,7 +18,6 @@ spring:
     password: postgres
     driverClassName: org.postgresql.Driver
     initialization-mode: always
-
 
   jpa:
     generate-ddl: true
